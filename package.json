@@ -1,0 +1,31 @@
+{
+  "name": "kuobox-api",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "@types/config": "^3.3.0",
+    "@types/node": "^18.11.18",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.15",
+    "config": "^3.3.8",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "pg": "^8.4.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "0.3.11",
+    "typeorm-naming-strategies": "^4.1.0"
+  },
+  "scripts": {
+    "start": "nodemon --exec node --loader ts-node/esm ./src/server.ts",
+    "typeorm": "typeorm-ts-node-esm",
+    "db:migration": "npm run typeorm -- -d src/data-source.ts migration:generate ./src/db/migrations/$npm_config_name",
+    "db:migrate": "npm run typeorm migration:run -- -d src/data-source.ts ",
+    "db:rollback": "npm run typeorm -- -d src/data-source.ts migration:revert"
+  }
+}
