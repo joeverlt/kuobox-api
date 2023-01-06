@@ -1,6 +1,6 @@
 import { Strategy, ExtractJwt } from "passport-jwt";
 import passport from "passport";
-import { User } from "../../entities/user.js";
+import { User } from "../../entities/user.entity.js";
 import dotenv from "dotenv";
 
 dotenv.config();

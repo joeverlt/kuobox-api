@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { User } from "../entities/user.js";
+import { User } from "../entities/user.entity.js";
 import bcrypt from "bcryptjs";
 import * as jwt from "jsonwebtoken-esm";
 

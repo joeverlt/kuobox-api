@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { User } from "../entities/user.js";
+import { User } from "../entities/user.entity.js";
 
 export class UserController {
   async index(request: Request, response: Response, next: NextFunction) {
