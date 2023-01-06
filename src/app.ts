@@ -1,6 +1,8 @@
 import express from "express";
 import { AppDataSource } from "./data-source.js";
+import AuthRoutes from "./routes/auth.routes.js";
 import UserRoutes from "./routes/user.routes.js";
+import passportService from "./services/auth/passport.service.js";
 
 class App {
   public express: any;
@@ -17,7 +19,12 @@ class App {
   }
 
   routes() {
-    this.express.use("/users", UserRoutes);
+    this.express.use(
+      "/users",
+      passportService.authenticate("jwt", { session: false }),
+      UserRoutes
+    );
+    this.express.use("/auth", AuthRoutes);
   }
 
   initDB() {

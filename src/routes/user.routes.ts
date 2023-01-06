@@ -1,5 +1,6 @@
 import express from "express";
 import { UserController } from "../controllers/user.controller.js";
+import passportService from "../services/auth/passport.service.js";
 
 class UserRoutes {
   public router: express.Router;
@@ -11,7 +12,11 @@ class UserRoutes {
   }
 
   public routes(): void {
-    this.router.get("/", this.userController.index);
+    this.router.get(
+      "/",
+      passportService.authenticate("jwt", { session: false }),
+      this.userController.index
+    );
   }
 }
 
